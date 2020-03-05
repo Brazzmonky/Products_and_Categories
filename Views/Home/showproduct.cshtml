@@ -1,0 +1,41 @@
+@model Product
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="~/css/style.css"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>@Model.Name</h1>
+    <br>
+    <div class="forms">
+        <h3>Categories:</h3>
+        <ul>
+            @foreach (var association in Model.Associations)
+            {
+            <li>@association.Category.Name</li>
+            }
+        </ul>
+    </div>
+    <div class="products">
+        <h3>Add Category:</h3>
+        <br>
+        <form action="/addtoproduct" method="POST">
+            <input type="hidden" name="ProductId" value="@Model.ProductId">
+            <select name="CategoryId">
+                @foreach (var category in ViewBag.notincategory)
+                {
+                <option value="@category.CategoryId">@category.Name</option>
+                }
+            </select>
+            <input type="submit" name="" value="Add">
+            </form>
+            </div>
+</div>
+    
+</body>
+</html>
+
